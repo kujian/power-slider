@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>整屏图片消失与显示幻灯片代码-面向对象版</title>
+<script type="text/javascript" src="images/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+* {
+	margin:0;
+	padding: 0;
+}
+li {
+	list-style: none;
+}
+a {
+	text-decoration:none;
+}
+.slider {
+	height:170px;
+	margin:10px auto;
+	overflow:hidden;
+	position:relative;
+	width:490px;
+}
+.sliderbox {
+	position:relative;
+}/*必须加这句css,否则向左右，上下滚动时会没有效果*/
+.sliderbox li {
+	width:490px;
+	height:170px;
+}
+.slidernav {
+	position:absolute;
+	right:4px;
+	bottom:5px;
+	z-index:1;
+}
+.slidernav li {
+	float:left;
+	width:24px;
+}
+.slidernav li a {
+	width:16px;
+	padding:2px 4px;
+	height:12px;
+	background:#fff;
+	color:#000;
+	text-align:center;
+}
+.slidernav li.current a {
+	background:#3B8DD1;
+	color:#fff;
+}
+.slidertext {
+	background:#000;
+	background:rgba(0, 0, 0, 0.6);
+	filter:alpha(opacity=60);
+	position:absolute;
+	left:0;
+	bottom:0;
+	width:100%;
+}
+.slidertext li {
+	display:none;
+	padding-left:20px;
+}
+.slidertext li a {
+	text-align:left;
+	line-height: 30px;
+	height: 30px;
+	color: #fff;
+}
+.slider .prev {
+	position: absolute;
+	top:50%;
+	margin-top:-30px;
+	cursor: pointer;
+	width:61px;
+	height:61px;
+	left:0;
+	background: url(images/ft_icons.png) 0 0 no-repeat;
+}
+.slider .next {
+	position: absolute;
+	top:50%;
+	margin-top:-30px;
+	right:0;
+	cursor:pointer;
+	width:61px;
+	height:61px;
+	background: url(images/ft_icons.png) 0 -61px no-repeat;
+}
+</style>
+</head>
+<body>
+<div class="slider" id="slider">
+    <ul class="sliderbox">
+        <li> <a href=""> <img src="images/1.jpg" alt="全场包邮"></a> </li>
+        <li> <a href=""> <img src="images/2.jpg" alt="真人集体"></a> </li>
+        <li> <a href=""> <img src="images/3.jpg" alt="春游记录"></a> </li>
+    </ul>
+    <ul class="slidernav">
+    </ul>
+    <ul class="slidertext">
+    </ul>
+    <div class="prev"></div>
+    <div class="next"></div>
+</div>
+<script type="text/javascript">
+    //首页图片滚动jQuery代码
+    //author:酷剑
+    //website:http://caibaojian.com
+    //2013.1.27
+    //cbaojian@gmail.com
+    function slider(obj,handle){
+    var index = 0,sliderBox = $(obj+" .sliderbox"), sliderLi = sliderBox.find("li"), len = sliderLi.length, sliderNav = $(obj+" .slidernav"),sliderText = $(obj+" .slidertext"),prev = $(obj+" .prev"),next = $(obj+" .next"),sliderTimer,navHtml='',textHtml='';
+    for(var i=0; i<len; i++){
+        var title = $("li:eq("+i+") img",sliderBox).attr("alt");
+        var url = $("li:eq("+i+") a",sliderBox).attr("href");
+        navHtml  += '<li><a href="#">'+(i+1)+'</a></li>';
+        if(handle == 'fadeTo'){
+            sliderLi.css({"position":"absolute","left":"0","top":"0"});//必须加这句css，否则渐隐渐显会出现一段空白的
+            if(i==0){
+                sliderLi.eq(i).css("display","block");
+            }else{ sliderLi.eq(i).css("display","none");}
+        }
+        textHtml += '<li><a href="'+url+'">'+title+'</a></li>';  
+    }
+    sliderNav.append(navHtml);
+    sliderText.append(textHtml);
+    var slidertitle = sliderText.find("li"),sliderA = sliderNav.find("li");
+    slidertitle.eq(0).show();
+    sliderA.eq(0).addClass("current"),
+    sliderLi.eq(0).addClass("current");
+    function showImg(i,index){
+    var sliderHeight = $(obj).height(),
+    sliderWidth = $(obj).width();
+    slidertitle.hide().eq(index).show();
+    sliderA.removeClass("current").eq(index).addClass("current"),
+    sliderLi.removeClass("current").eq(index).addClass("current");
+    if(handle == 'top'){
+        sliderBox.stop(true,false).animate({"top":-sliderHeight*index},"slow");
+    }else if(handle == 'left'){
+        sliderLi.css("float","left");
+        sliderBox.css("width",len*sliderWidth).stop(true,true).animate({"left":-sliderWidth*index},"slow");
+    }else if(handle == 'hide'){
+        sliderLi.stop(true,true).hide().eq(index).show();
+    }else if(handle == 'fadeTo'){
+        sliderLi.eq(i).stop(true,false).fadeOut();
+        sliderLi.eq(index).stop(true,false).fadeIn();
+    }
+    else if(handle == 'slideTo'){
+        sliderLi.css("z-index",'1').stop(true,true).slideUp().eq(index).css("z-index","2").slideDown();
+    }
+    }
+    sliderA.mouseover(function(){
+     index = $(this).index();
+     var i = sliderA.index($(".slidernav .current:eq(0)"));
+     if(index!=i){
+        showImg(i,index);
+     }
+    $(this).children("a").click(function(){return false;});
+    }).eq(0).mouseover();
+    if(len<=1){prev.hide();next.hide();}
+    else{
+    //prev
+    prev.click(function(){
+        var i=index;
+        index -= 1;
+        if(index == -1){index = len -1};
+        showImg(i,index);
+    });
+    // //next
+    next.click(function(){
+        auto();
+    }); 
+    }
+    //auto fn
+    function auto(){
+        var i = index;
+        index = (index+1)%len;
+        showImg(i,index);
+    }
+    //set time
+    var settime = window.setInterval(auto,6000);
+    $(obj).mouseover(function(){
+        window.clearInterval(settime);
+    })
+    $(obj).mouseleave(function(){
+        window.setInterval(auto,6000);
+    })
+    }
+    slider("#slider","fadeTo");   
+</script>
+</body>
+</html>
