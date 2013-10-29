@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery全能图片滚动插件演示</title>
+    <script type="text/javascript" src="images/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="power-slider.js"></script>
+	
+<style type="text/css">
+*{margin:0; padding: 0;}
+li{list-style: none;}
+a{text-decoration:none;}
+.slider{height:174px; margin:10px auto; overflow:hidden; position:relative; width:726px;}
+.sliderbox{position:relative;}/*必须加这句css,否则向左右，上下滚动时会没有效果*/
+.sliderbox li{width:174px; height:174px; margin-left:10px}
+.sliderbox li.first{margin-left:0;}
+.slidernav{position:absolute; right:4px; bottom:5px; z-index:1;}
+.slidernav li{float:left; width:24px;}
+.slidernav li a{width:16px; padding:2px 4px; height:12px; background:#fff; color:#000; text-align:center;}
+.slidernav li.current a{background:#3B8DD1; color:#fff;}
+.slidertext{background:#000; background:rgba(0,0,0,0.6); filter:alpha(opacity=60); position:absolute; left:0; bottom:0; width:100%;}
+.slidertext li{display:none; padding-left:20px;}
+.slidertext li a{text-align:left; line-height: 30px; height: 30px; color: #fff;}
+.slider .prev{position: absolute; top:50%; margin-top:-30px; cursor: pointer; width:61px; height:61px; left:0; background: url(images/ft_icons.png) 0 0 no-repeat;}
+.slider .next{position: absolute; top:50%; margin-top:-30px; right:0;  cursor:pointer; width:61px; height:61px; background: url(images/ft_icons.png) 0 -61px no-repeat;}
+.text{height:30px; width:200px; overflow: hidden; position: relative;}
+.text li{line-height:30px; height: 30px; width: 200px;}
+
+</style>
+</head>
+<body>
+	<div class="slider" id="slider">
+		<ul class="sliderbox">
+			<li>
+				<a href="">
+					<img src="images/1.jpg" alt="全场包邮"></a>
+			</li>
+			<li>
+				<a href="">
+					<img src="images/2.jpg" alt="真人集体"></a>
+			</li>
+			<li>
+				<a href="">
+					<img src="images/3.jpg" alt="春游记录"></a>
+			</li>
+		</ul>
+		
+	</div>
+	<div class="text" id="text">
+		<ul class="sliderbox">
+			<li><a href="">测试文字的滚动是怎么样的</a></li>
+			<li><a href="">测试文字的滚动是怎么样的</a></li>
+			<li><a href="">测试文字的滚动是怎么样的</a></li>
+			<li><a href="">测试文字的滚动是怎么样的</a></li>
+			<li><a href="">测试文字的滚动是怎么样的</a></li>
+			<li><a href="">测试文字的滚动是怎么样的</a></li>
+			<li><a href="">测试文字的滚动是怎么样的</a></li>
+			<li><a href="">测试文字的滚动是怎么样的</a></li>
+		</ul>
+	</div>
+	<div class="slider" id="img">
+		<ul class="sliderbox">
+			<li class="first">
+				
+				<a href=""><img src="images/ban1.gif"/></a>
+			</li>
+			<li>
+				
+				<a href=""><img src="images/ban2.gif"/></a>
+			</li>
+			<li>
+				
+				<a href=""><img src="images/ban3.gif"/></a>
+			</li>
+			<li>
+				
+				<a href=""><img src="images/ban4.gif"/></a>
+			</li>
+			<li class="first">
+				
+				<a href=""><img src="images/ban5.gif"/></a>
+			</li>
+			<li>
+				
+				<a href=""><img src="images/ban5.gif"/></a>
+			</li>
+			<li>
+				
+				<a href=""><img src="images/ban5.gif"/></a>
+			</li>
+			<li>
+				
+				<a href=""><img src="images/ban4.gif"/></a>
+			</li>
+		</ul>
+		<ul class="slidertext"></ul>
+		<ul class="slidernav"></ul>
+		<div class="prev"></div>
+		<div class="next"></div>
+	</div>
+    <h1><a href="http://caibaojian.com/power-slider">返回全能插件的详细介绍</a></h1>
+    <script type="text/javascript">
+    $(function(){  
+        $("#slider").powerSlider({handle:"fadeTo"});
+        $("#text").powerSlider();
+        $("#img").powerSlider({picNum:4,handle:"hide"});
+    });
+</script>
+</body>
+</html>
