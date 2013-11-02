@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文字单行滚动-jQuery全能滚动插件：power-slider演示-前端博客</title>
+	<link type="image/x-icon" href="http://caibaojian.com/favicon.ico" rel="icon">
+  	<link type="image/x-icon" href="http://caibaojian.com/favicon.ico" rel="shortcut icon">
+  	<link rel="stylesheet" href="reset.css"/>
+    <meta name="keywords" content="前端博客,代码演示" />
+  	<meta name="description" content="文字单行滚动-jQuery全能滚动插件：power-slider演示，前端博客代码演示，caibaojian.com，前端代码范例，演示代码" />
+	<style type="text/css">
+body{text-align: left;width:696px; margin:0 auto;}
+.demolist{font-size: 0; *word-spacing: -1px;}
+.demolist li{display: inline-block; font-size:14px; border:1px solid #eee; padding:10px; margin-right:10px; *display:inline; *zoom:1; word-spacing: normal; letter-spacing: normal; vertical-align: top;}
+.active{background:#eee;}
+.hidden{display: none;}
+.menu{width:100%; background:#ECECEC; position:fixed; _position:absolute; top:0; left:0; z-index:3;}
+.menu ul{width:600px; margin:0 auto;}
+.menu ul li{float:left; margin-right:10px; padding:2px 6px;}
+.menu ul li.active{background: #fff;}
+.menu ul li a{line-height:32px; padding:0 4px;}
+.code{padding:10px 0;}
+.code h3 span{border:1px solid #ddd; margin-left:-1px; padding:10px;display:inline-block; cursor:pointer;}
+pre{background:#eee; padding:10px;}
+.sliderbox{position:relative;}/*必须加这句css,否则向左右，上下滚动时会没有效果*/
+.content{margin:20px auto; width:200px;}
+.text{height:30px; width:200px; overflow: hidden; position: relative; margin:0px auto;}
+.text li{line-height:30px; height: 30px; width: 200px; white-space: nowrap; overflow: hidden; text-overflow:ellipsis;}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="path">你的位置：<span xmlns:v="http://rdf.data-vocabulary.org/#">
+        <span typeof="v:Breadcrumb"><a href="http://caibaojian.com" rel="v:url" property="v:title">前端博客</a></span>  &gt;
+                <span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="http://caibaojian.com/t/jquery插件">jquery插件</a></span> &gt; <span typeof="v:Breadcrumb"><span class="breadcrumb_last" property="v:title"><a href="http://caibaojian.com/power-slider">jQuery插件：万能滚动power-slider</a></span></span>
+        </span></div>
+        <div class="menu">
+	        <ul class="fix">
+	        	<li>
+					<div><a href="http://caibaojian.com" target="_blank">前端博客</a></div>
+				</li>
+				<li>
+					<div><a href="http://caibaojian.com/power-slider" target="_blank">power-slider插件主页</a></div>
+				</li>
+	        	<li>
+					<div><a href="index.html">单张图片滚动</a></div>
+				</li>
+				<li>
+					<div><a href="index6.html">多张图片滚动</a></div>
+				</li>
+				<li class="active">
+					<div><a href="index11.html">文字滚动</a></div>
+				</li>
+				<li>
+					<div><a href="index13.html">内容滚动</a></div>
+				</li>
+	        </ul>
+	    </div>
+		<div class="content">
+			<h3>第一种：默认上下滚动</h3>
+			<div class="text" id="text">
+				<ul class="sliderbox">
+					<li><a href="">测试文字1滚动Lorem ipsum dolor sit1.</a></li>
+					<li><a href="">测试文字2滚动Lorem ipsum dolor sit2.</a></li>
+					<li><a href="">测试文字3滚动Lorem ipsum dolor sit3.</a></li>
+					<li><a href="">测试文字4滚动Lorem ipsum dolor sit4.</a></li>
+					<li><a href="">测试文字5滚动Lorem ipsum dolor sit5.</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="content">
+			<h3>第二种：左右滚动</h3>
+			<div class="text" id="text-left">
+				<ul class="sliderbox">
+					<li><a href="">测试文字1滚动Lorem ipsum dolor sit1.</a></li>
+					<li><a href="">测试文字2滚动Lorem ipsum dolor sit2.</a></li>
+					<li><a href="">测试文字3滚动Lorem ipsum dolor sit3.</a></li>
+					<li><a href="">测试文字4滚动Lorem ipsum dolor sit4.</a></li>
+					<li><a href="">测试文字5滚动Lorem ipsum dolor sit5.</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="content">
+			<h3>第三种：消失与出现</h3>
+			<div class="text" id="text-hide">
+				<ul class="sliderbox">
+					<li><a href="">测试文字1滚动Lorem ipsum dolor sit1.</a></li>
+					<li><a href="">测试文字2滚动Lorem ipsum dolor sit2.</a></li>
+					<li><a href="">测试文字3滚动Lorem ipsum dolor sit3.</a></li>
+					<li><a href="">测试文字4滚动Lorem ipsum dolor sit4.</a></li>
+					<li><a href="">测试文字5滚动Lorem ipsum dolor sit5.</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="content">
+			<h3>第四种：渐隐渐现</h3>
+			<div class="text" id="text-fadeTo">
+				<ul class="sliderbox">
+					<li><a href="">测试文字1滚动Lorem ipsum dolor sit1.</a></li>
+					<li><a href="">测试文字2滚动Lorem ipsum dolor sit2.</a></li>
+					<li><a href="">测试文字3滚动Lorem ipsum dolor sit3.</a></li>
+					<li><a href="">测试文字4滚动Lorem ipsum dolor sit4.</a></li>
+					<li><a href="">测试文字5滚动Lorem ipsum dolor sit5.</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="content">
+			<h3>第五种：上去和下来</h3>
+			<div class="text" id="text-slideTo">
+				<ul class="sliderbox">
+					<li><a href="">测试文字1滚动Lorem ipsum dolor sit1.</a></li>
+					<li><a href="">测试文字2滚动Lorem ipsum dolor sit2.</a></li>
+					<li><a href="">测试文字3滚动Lorem ipsum dolor sit3.</a></li>
+					<li><a href="">测试文字4滚动Lorem ipsum dolor sit4.</a></li>
+					<li><a href="">测试文字5滚动Lorem ipsum dolor sit5.</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<ul class="demolist">
+		<li class="active">
+			<div><a href="index11.html">文字单行滚动</a></div>
+		</li>
+		<li>
+			<div><a href="index12.html">文字多行滚动</a></div>
+		</li>
+		
+	</ul>
+	<div class="code">
+		<h3><span class="active">HTML代码</span><span>CSS代码</span><span>JS代码</span></h3>
+		<pre>&lt;div class=&quot;text&quot; id=&quot;text&quot;&gt;
+&lt;ul class=&quot;sliderbox&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt;测试文字滚动Lorem ipsum dolor sit1.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt;测试文字滚动Lorem ipsum dolor sit2.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt;测试文字滚动Lorem ipsum dolor sit3.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt;测试文字滚动Lorem ipsum dolor sit4.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt;测试文字滚动Lorem ipsum dolor sit5.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;</pre>
+<pre class="hidden">.sliderbox{position:relative;}/*必须加这句css,否则向左右，上下滚动时会没有效果*/
+.text{height:30px; width:200px; overflow: hidden; position: relative; margin:20px auto;}
+.text li{line-height:30px; height: 30px; width: 200px; white-space: nowrap; overflow: hidden; text-overflow:ellipsis;}
+</pre>
+<pre class="hidden">$("#text").powerSlider();//请对照相应的对象写相应的动作。
+</pre>
+	</div>
+    <h1><a href="http://caibaojian.com/power-slider">返回全能插件的详细介绍</a></h1>
+    <script type="text/javascript" src="images/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="power-slider.js"></script>
+    <script type="text/javascript">
+    $(function(){  
+        $("#text").powerSlider({delayTime:1000});
+        $("#text-left").powerSlider({handle:"left",delayTime:2000});
+        $("#text-hide").powerSlider({handle:"hide",delayTime:3000});
+        $("#text-fadeTo").powerSlider({handle:"fadeTo",delayTime:4000});
+        $("#text-slideTo").powerSlider({handle:"slideTo",delayTime:5000});
+        //$("#text").powerSlider();
+        //$("#img").powerSlider({picNum:4,handle:"hide"});
+        $(".code h3 span").each(function(i){
+        	$(this).click(function(){
+        		$(this).addClass("active").siblings().removeClass("active");
+        		$(".code pre").eq(i).show().siblings("pre").hide();
+        	})
+        })
+    });
+</script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=15910806" charset="UTF-8"></script>
+</body>
+</html>
