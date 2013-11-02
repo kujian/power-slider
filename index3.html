@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>图片左右滚动-jQuery全能滚动插件：power-slider演示-前端博客</title>
+	<title>图片消失与出现-jQuery全能滚动插件：power-slider演示-前端博客</title>
 	<link type="image/x-icon" href="http://caibaojian.com/favicon.ico" rel="icon">
   	<link type="image/x-icon" href="http://caibaojian.com/favicon.ico" rel="shortcut icon">
   	<link rel="stylesheet" href="reset.css"/>
     <meta name="keywords" content="前端博客,代码演示" />
-  	<meta name="description" content="图片左右滚动-jQuery全能滚动插件：power-slider演示，前端博客代码演示，caibaojian.com，前端代码范例，演示代码" />
+  	<meta name="description" content="图片消失与出现-jQuery全能滚动插件：power-slider演示，前端博客代码演示，caibaojian.com，前端代码范例，演示代码" />
 	<style type="text/css">
 body{text-align: left;width:600px; margin:0 auto;}
 .demolist{font-size: 0; *word-spacing: -1px;}
@@ -30,11 +30,6 @@ pre{background:#eee; padding:10px;}
 .slidernav li{float:left; width:24px;}
 .slidernav li a{width:16px; padding:2px 4px; height:12px; background:#fff; color:#000; text-align:center;}
 .slidernav li.current a{background:#3B8DD1; color:#fff;}
-.slidertext{background:#000; background:rgba(0,0,0,0.6); filter:alpha(opacity=60); position:absolute; left:0; bottom:0; width:100%;}
-.slidertext li{display:none; padding-left:20px;}
-.slidertext li a{text-align:left; line-height: 30px; height: 30px; color: #fff;}
-.slider .prev, .slider .next{position: absolute; top:50%; margin-top:-30px; cursor: pointer; width:61px; height:61px; left:0; background: url(images/ft_icons.png) 0 0 no-repeat;}
-.slider .next{right:0; left:auto; background-position: 0 -61px;}
 	</style>
 </head>
 <body>
@@ -89,10 +84,10 @@ pre{background:#eee; padding:10px;}
 		<li>
 			<div><a href="index.html">图片上下滚动</a></div>
 		</li>
-		<li class="active">
+		<li>
 			<div><a href="index2.html">图片左右滚动</a></div>
 		</li>
-		<li>
+		<li class="active">
 			<div><a href="index3.html">图片消失与出现</a></div>
 		</li>
 		<li>
@@ -120,7 +115,7 @@ pre{background:#eee; padding:10px;}
 		<pre class="hidden">.slider{height:170px; margin:20px auto; overflow:hidden; position:relative;}
 .sliderbox{position:relative;}/*必须加这句css,否则向左右，上下滚动时会没有效果*/
 		</pre>
-		<pre class="hidden">$("#slider").powerSlider({handle:"left"});
+		<pre class="hidden">$("#slider").powerSlider({handle:"hide",speed:0});
 		</pre>
 	</div>
     <h1><a href="http://caibaojian.com/power-slider">返回全能插件的详细介绍</a></h1>
@@ -128,7 +123,7 @@ pre{background:#eee; padding:10px;}
 	<script type="text/javascript" src="power-slider.js"></script>
     <script type="text/javascript">
     $(function(){  
-        $("#slider").powerSlider({handle:"left"});
+        $("#slider").powerSlider({handle:"hide"});
         //$("#text").powerSlider();
         //$("#img").powerSlider({picNum:4,handle:"hide"});
         $(".code h3 span").each(function(i){
