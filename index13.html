@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图文单列滚动-jQuery全能滚动插件：power-slider演示-前端博客</title>
+	<link type="image/x-icon" href="http://caibaojian.com/favicon.ico" rel="icon">
+  	<link type="image/x-icon" href="http://caibaojian.com/favicon.ico" rel="shortcut icon">
+  	<link rel="stylesheet" href="reset.css"/>
+    <meta name="keywords" content="前端博客,代码演示" />
+  	<meta name="description" content="图文单列滚动-jQuery全能滚动插件：power-slider演示，前端博客代码演示，caibaojian.com，前端代码范例，演示代码" />
+	<style type="text/css">
+body{text-align: left; margin:0 auto; width:700px;}
+.demolist{font-size: 0; *word-spacing: -1px;}
+.demolist li{display: inline-block; font-size:14px; border:1px solid #eee; padding:10px; margin-right:10px; *display:inline; *zoom:1; word-spacing: normal; letter-spacing: normal; vertical-align: top;}
+.active{background:#eee;}
+.hidden{display: none;}
+.menu{width:100%; background:#ECECEC; position:fixed; _position:absolute; top:0; left:0; z-index:3;}
+.menu ul{width:600px; margin:0 auto;}
+.menu ul li{float:left; margin-right:10px; padding:2px 6px;}
+.menu ul li.active{background: #fff;}
+.menu ul li a{line-height:32px; padding:0 4px;}
+.code{padding:10px 0;}
+.code h3 span{border:1px solid #ddd; margin-left:-1px; padding:10px;display:inline-block; cursor:pointer;}
+pre{background:#eee; padding:10px;}
+.slider{height:198px; margin:20px auto; overflow:hidden; position:relative; width:174px;}
+.sliderbox{position:relative;}/*必须加这句css,否则向左右，上下滚动时会没有效果*/
+.sliderbox li{ text-align: center; width:174px;}
+.slidernav{position:absolute; right:20px; top:0; width:100%; color:#fff; font-size:0; *word-spacing: -1px; text-align: right;}
+.slidernav li{display: inline-block; *display: inline; *zoom:1; vertical-align: top; font-size:14px; margin-left: 10px; letter-spacing: normal; word-spacing: normal;}
+.slidernav li a{width:16px; padding:2px 4px; height:12px; background:#fff; color:#000; text-align:center;}
+.slidernav li.current a{background:#3B8DD1; color:#fff;}
+@media screen and (-webkit-min-device-antio:0){
+.slidernav{letter-spacing: -5px;}
+}
+.slider .prev, .slider .next{position: absolute; top:50%; margin-top:-30px; cursor: pointer; width:61px; height:61px; left:0; background: url(images/ft_icons.png) 0 0 no-repeat; text-indent:-9999px;}
+.slider .next{right:0; left:auto; background-position: 0 -61px;}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="path">你的位置：<span xmlns:v="http://rdf.data-vocabulary.org/#">
+        <span typeof="v:Breadcrumb"><a href="http://caibaojian.com" rel="v:url" property="v:title">前端博客</a></span>  &gt;
+                <span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="http://caibaojian.com/t/jquery插件">jquery插件</a></span> &gt; <span typeof="v:Breadcrumb"><span class="breadcrumb_last" property="v:title"><a href="http://caibaojian.com/power-slider">jQuery插件：万能滚动power-slider</a></span></span>
+        </span></div>
+        <div class="menu">
+	        <ul class="fix">
+	        	<li>
+					<div><a href="http://caibaojian.com" target="_blank">前端博客</a></div>
+				</li>
+				<li>
+					<div><a href="http://caibaojian.com/power-slider" target="_blank">power-slider插件主页</a></div>
+				</li>
+	        	<li>
+					<div><a href="index.html">单张图片滚动</a></div>
+				</li>
+				<li>
+					<div><a href="index6.html">多张图片滚动</a></div>
+				</li>
+				<li>
+					<div><a href="index11.html">文字滚动</a></div>
+				</li>
+				<li class="active">
+					<div><a href="index13.html">内容滚动</a></div>
+				</li>
+	        </ul>
+	    </div>
+		<div class="content">
+			<div id="slider" class="slider">
+				<ul class="sliderbox">
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3><a href="">我是一个标题测试1</a></h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试2</h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试3</h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试4</h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试5</h3>
+					</li>
+				</ul>
+				<ul class="slidernav"></ul>
+				<div class="prev">&lt;</div>
+				<div class="next">&gt;</div>
+			</div>
+		</div>
+		<div class="content">
+			<div id="slider-left" class="slider">
+				<ul class="sliderbox">
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3><a href="">我是一个标题测试1</a></h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试2</h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试3</h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试4</h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试5</h3>
+					</li>
+				</ul>
+				<ul class="slidernav"></ul>
+				<div class="prev">&lt;</div>
+				<div class="next">&gt;</div>
+			</div>
+		</div>
+		<div class="content">
+			<div id="slider-fadeTo" class="slider">
+				<ul class="sliderbox">
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3><a href="">我是一个标题测试1</a></h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试2</h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试3</h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试4</h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试5</h3>
+					</li>
+				</ul>
+				<ul class="slidernav"></ul>
+				<div class="prev">&lt;</div>
+				<div class="next">&gt;</div>
+			</div>
+		</div>
+		<div class="content">
+			<div id="slider-hide" class="slider">
+				<ul class="sliderbox">
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3><a href="">我是一个标题测试1</a></h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试2</h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试3</h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试4</h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试5</h3>
+					</li>
+				</ul>
+				<ul class="slidernav"></ul>
+				<div class="prev">&lt;</div>
+				<div class="next">&gt;</div>
+			</div>
+		</div>
+		<div class="content">
+			<div id="slider-slideTo" class="slider">
+				<ul class="sliderbox">
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3><a href="">我是一个标题测试1</a></h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试2</h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试3</h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试4</h3>
+					</li>
+					<li class="first">
+						<div><a href=""><img src="images/ban1.gif" alt="HTML代码"/></a></div>
+						<h3>我是一个标题测试5</h3>
+					</li>
+				</ul>
+				<ul class="slidernav"></ul>
+				<div class="prev">&lt;</div>
+				<div class="next">&gt;</div>
+			</div>
+		</div>
+	</div>
+	<ul class="demolist">
+		<li class="active">
+			<div><a href="index13.html">图文单列滚动</a></div>
+		</li>
+		<li>
+			<div><a href="index14.html">图文多列并排滚动</a></div>
+		</li>
+		<li>
+			<div><a href="index15.html">图文左右混排单列滚动</a></div>
+		</li>
+		<li>
+			<div><a href="index16.html">图文左右混排多列滚动</a></div>
+		</li>
+	</ul>
+	<div class="code">
+		<h3><span class="active">HTML代码</span><span>CSS代码</span><span>JS代码</span></h3>
+		<pre>&lt;div class=&quot;slider&quot; id=&quot;img&quot;&gt;
+&lt;ul class=&quot;sliderbox&quot;&gt;
+&lt;li class=&quot;first&quot;&gt;
+&lt;div&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;images/ban1.gif&quot; alt=&quot;HTML代码&quot;/&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;h3&gt;我是一个标题测试&lt;/h3&gt;
+&lt;/li&gt;
+&lt;li class=&quot;first&quot;&gt;
+&lt;div&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;images/ban1.gif&quot; alt=&quot;HTML代码&quot;/&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;h3&gt;我是一个标题测试&lt;/h3&gt;
+&lt;/li&gt;
+&lt;li class=&quot;first&quot;&gt;
+&lt;div&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;images/ban1.gif&quot; alt=&quot;HTML代码&quot;/&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;h3&gt;我是一个标题测试&lt;/h3&gt;
+&lt;/li&gt;
+&lt;li class=&quot;first&quot;&gt;
+&lt;div&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;images/ban1.gif&quot; alt=&quot;HTML代码&quot;/&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;h3&gt;我是一个标题测试&lt;/h3&gt;
+&lt;/li&gt;
+&lt;li class=&quot;first&quot;&gt;
+&lt;div&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;images/ban1.gif&quot; alt=&quot;HTML代码&quot;/&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;h3&gt;我是一个标题测试&lt;/h3&gt;
+&lt;/li&gt;
+&lt;li class=&quot;first&quot;&gt;
+&lt;div&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;images/ban1.gif&quot; alt=&quot;HTML代码&quot;/&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;h3&gt;我是一个标题测试&lt;/h3&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class=&quot;slidernav&quot;&gt;&lt;/ul&gt;
+&lt;div class=&quot;prev&quot;&gt;&amp;lt;&lt;/div&gt;
+&lt;div class=&quot;next&quot;&gt;&amp;gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+<pre class="hidden">.slider{height:198px; margin:20px auto; overflow:hidden; position:relative; width:174px;}
+.sliderbox{position:relative;}/*必须加这句css,否则向左右，上下滚动时会没有效果*/
+.sliderbox li{text-align: center; width:174px;}
+.slidernav{position:absolute; right:20px; top:0; width:100%; color:#fff; font-size:0; *word-spacing: -1px; text-align: right;}
+.slidernav li{display: inline-block; *display: inline; *zoom:1; vertical-align: top; font-size:14px; margin-left: 10px; letter-spacing: normal; word-spacing: normal;}
+.slidernav li a{width:16px; padding:2px 4px; height:12px; background:#fff; color:#000; text-align:center;}
+.slidernav li.current a{background:#3B8DD1; color:#fff;}
+@media screen and (-webkit-min-device-antio:0){
+.slidernav{letter-spacing: -5px;}
+}
+.slider .prev, .slider .next{position: absolute; top:50%; margin-top:-30px; cursor: pointer; width:61px; height:61px; left:0; background: url(images/ft_icons.png) 0 0 no-repeat; text-indent:-9999px;}
+.slider .next{right:0; left:auto; background-position: 0 -61px;}
+</pre>
+<pre class="hidden">$("#img").powerSlider();
+</pre>
+	</div>
+    <h1><a href="http://caibaojian.com/power-slider">返回全能插件的详细介绍</a></h1>
+    <script type="text/javascript" src="images/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="power-slider.js"></script>
+    <script type="text/javascript">
+    $(function(){  
+        $("#slider").powerSlider();$("#slider-left").powerSlider({handle:"left"});$("#slider-hide").powerSlider({handle:"hide",speed:0});$("#slider-fadeTo").powerSlider({handle:"fadeTo"});
+        $("#slider-slideTo").powerSlider({handle:"slideTo"});
+        //$("#text").powerSlider();
+        //$("#img").powerSlider({picNum:4,handle:"hide"});
+        $(".code h3 span").each(function(i){
+        	$(this).click(function(){
+        		$(this).addClass("active").siblings().removeClass("active");
+        		$(".code pre").eq(i).show().siblings("pre").hide();
+        	})
+        })
+    });
+</script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=15910806" charset="UTF-8"></script>
+</body>
+</html>
