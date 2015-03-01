@@ -114,7 +114,7 @@
 				if(index != i) {
 					showImg(i, index);
 				}
-			}).eq(0).trigger(opts.clickMode);
+			});
 			if(len <= 1) {
 				prev.hide();
 				next.hide();
