@@ -5,11 +5,11 @@ jQuery插件：万能滚动插件（包含文字滚动、图片上下滚动、�
 
 插件作者：蔡宝坚
 
-作者主页：http://caibajian.com
+作者主页：http://caibaojian.com
 
-插件地址：http://caibajian.com/power-slider
+插件地址：http://caibaojian.com/power-slider
 
-插件案例：http://caibajian.com/demo/power-slider
+插件案例：http://caibaojian.com/demo/power-slider
 
 如果你感兴趣可以下载里面包含的全部案例从index.html ~ index16.html共16个案例。
 
