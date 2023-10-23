@@ -5,11 +5,11 @@
 
 > 插件作者：蔡宝坚
 
-> 作者主页：http://caibaojian.com
+> 作者主页：https://qdkfweb.cn
 
-> 插件地址：http://caibaojian.com/power-slider
+> 插件地址：https://qdkfweb.cn/power-slider
 
-> 插件案例：http://caibaojian.com/demo/power-slider
+> 插件案例：https://qdkfweb.cn/demo/power-slider
 
 如果你感兴趣可以下载里面包含的全部案例从index.html ~ index16.html共16个案例。
 

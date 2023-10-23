@@ -11,8 +11,8 @@
 //增加了数字导航的滑过方式（可以为鼠标移上或者点击方式）
 //插件名字：power-slider（多功能滚动插件）
 //插件作者：蔡宝坚
-//作者博客：http://caibaojian.com
-//插件网站：http://caibaojian.com/power-slider
+//作者博客：https://qdkfweb.cn
+//插件网站：https://qdkfweb.cn/power-slider
 //使用协议：在保留头部版权的情况下，个人和商业均可免费使用
 //使用范例：http://caibajian.com/demo/power-slider
 (function($) {
